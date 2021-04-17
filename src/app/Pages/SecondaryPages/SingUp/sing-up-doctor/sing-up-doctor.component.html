@@ -1,0 +1,112 @@
+<div class="singup-form-container">
+    <form [formGroup]="formUser" class="singup-form">
+        <div class="form-group">
+            <label>Nombre de Usuario:</label>
+            <div>
+                <input formControlName="nombreUsuario" type="text" name="username" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            <div>
+                <input formControlName="nombre" type="text" name="name" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellido Paterno:</label>
+            <div>
+                <input formControlName="apellidoPaterno" type="text" name="lastname" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellido Materno:</label>
+            <div>
+                <input formControlName="apellidoMaterno" type="text" name="lastname" class="form-control">
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label>DNI:</label>
+            <div>
+                <input formControlName="dni" type="text" name="dni" class="form-control">
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label>Correo:</label>
+            <div>
+                <input formControlName="correo" type="email" name="email" class="form-control">
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label>Password:</label>
+            <div>
+                <input formControlName="password" autocomplete="on" type="password" name="password" class="form-control">
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label>Celular:</label>
+            <div>
+                <input formControlName="celular" type="text" name="phone" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Fecha de nacimiento:</label>
+            <div >
+                <input formControlName="fechaNacimiento" type="date" name="birthday" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Distrito:</label>
+            <div >
+                <select type="text"  formControlName="distrito" class="form-control">
+                    <option value="" disabled>Seleccionar Distrito</option>
+                    <option *ngFor="let district of listDistrict" [value]="district">{{district}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Direccion:</label>
+            <div >
+                <input formControlName="direccion" type="text" name="adress" class="form-control">
+            </div>
+        </div>
+        
+    </form>
+    
+    <form [formGroup]="formDoctor" class="singup-form">
+        <div class="form-group">
+            <label>Centro de Labor:</label>
+            <div>
+                <input formControlName="centro_labor" type="text" name="centro_labor" class="form-control">
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>Número de Colegiatura:</label>
+            <div>
+                <input formControlName="numero_colegiatura" type="text" name="numero_colegiatura" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Tarifa:</label>
+            <div>
+                <input formControlName="tarifa" type="text" name="tarifa" class="form-control" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Especialidad:</label>
+            <div >
+                <select type="text"  formControlName="especialidad" class="form-control">
+                    <option value="" disabled>Seleccionar Especialidad</option>
+                    <option *ngFor="let especialidad of listSpeciality" [value]="especialidad.nombre">{{especialidad.nombre}}</option>
+                </select>
+            </div>
+        </div>
+    
+        <button (click)="createPatient()" class="btn btn-primary">Sing Up</button>
+    
+    </form>
+</div>
+
+<div [className]="confirmCreated ? 'confirmation' : 'no-confirmation'"> 
+    <app-alert-sing-up></app-alert-sing-up>
+</div>

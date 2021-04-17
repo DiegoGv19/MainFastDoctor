@@ -1,0 +1,22 @@
+<form [formGroup]="formLogin" class="from-login ">
+    <div class="container-login">
+        <h2 class="container-login-title">Log in</h2>
+        <div class="container-login-main-container">
+            <div class="container-login-container">
+                <label class="container-login-label">Username</label>
+                <div class="container-login-input">
+                    <input type="email" name="username" class="form-control" formControlName="username">
+                </div>
+            </div>
+            <div class="container-login-container">
+                <label class="container-login-label">Password</label>
+                <div class="container-login-input">
+                    <input type="password" name="password" autocomplete="on" class="form-control" formControlName="password">
+                </div>
+            </div>
+            <a routerLink='singup/patient'  class="stretched-link">Registrarce</a>
+
+            <button (click)="login()" type="button" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</form>

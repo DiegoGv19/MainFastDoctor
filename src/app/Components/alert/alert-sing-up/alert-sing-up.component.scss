@@ -1,0 +1,18 @@
+.alert-singup-container {
+    left: 50%;
+    padding: 20px;
+    position: sticky;
+    top: 25%;
+    transform: translateX(-50%) translateY(50%);
+    width: 300px;
+
+    &-title{
+        font-size: 24px;
+    }
+
+    &-button {
+        margin-left: 100%;
+        transform: translateX(-100%);
+    }
+    
+}

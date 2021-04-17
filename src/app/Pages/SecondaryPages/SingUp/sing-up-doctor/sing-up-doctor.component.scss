@@ -1,0 +1,23 @@
+.confirmation {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.no-confirmation {
+    display: none;
+}
+
+.singup-form-container {
+    align-items: center;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.singup-form {
+    width: 400px;
+}
