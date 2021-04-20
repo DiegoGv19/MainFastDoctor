@@ -44,7 +44,7 @@ export class SingUpPatientComponent implements OnInit {
   public createPatient()
   {
     if(this.formPatient.valid) {
-      this.patientService.RegisterPatient(this.formPatient.value as User).subscribe(
+      this.patientService.registerPatient(this.formPatient.value as User).subscribe(
         () => {
           this.confirmCreated = true;
         },

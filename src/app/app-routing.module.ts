@@ -7,6 +7,9 @@ import { PatientComponent } from './Pages/SecondaryPages/mainPage/patient/patien
 import { SingUpComponent } from './Pages/MainPages/sing-up/sing-up.component';
 import { SingUpDoctorComponent } from './Pages/SecondaryPages/SingUp/sing-up-doctor/sing-up-doctor.component';
 import { SingUpPatientComponent } from './Pages/SecondaryPages/SingUp/sing-up-patient/sing-up-patient.component';
+import { MainPatientComponent } from './Components/Patient/main-patient/main-patient.component';
+import { MedicalAppointmentComponent } from './Components/Patient/medical-appointment/medical-appointment.component';
+import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
 
 const routes: Routes = [
   {
@@ -41,7 +44,26 @@ const routes: Routes = [
       },
       {
         path: 'patient',
-        component: PatientComponent
+        component: PatientComponent,
+        children: [
+          {
+            path: 'main-patient',
+            redirectTo: ''
+          },
+          {
+            path: '',
+            component: MainPatientComponent
+          },
+          {
+            path: 'medical-appointment',
+            component: MedicalAppointmentComponent
+          },
+          {
+            path: 'list-available-doctor',
+            component: ListAvailableDoctorsComponent
+          }
+
+        ]
       }
     ]
   }

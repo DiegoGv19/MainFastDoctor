@@ -14,7 +14,7 @@ export class PatientService {
 
   constructor(private apiService: ApiService, private httpClient: HttpClient) { }
 
-  public RegisterPatient(user: User): Observable<Patient>
+  public registerPatient(user: User): Observable<Patient>
   {
     let patient: Patient = new Patient();
     patient.usuario = user;

@@ -13,7 +13,12 @@ import { SingUpComponent } from './Pages/MainPages/sing-up/sing-up.component';
 import { SingUpPatientComponent } from './Pages/SecondaryPages/SingUp/sing-up-patient/sing-up-patient.component';
 import { SingUpDoctorComponent } from './Pages/SecondaryPages/SingUp/sing-up-doctor/sing-up-doctor.component';
 import { MenuSingUpComponent } from './Components/Menu/menu-sing-up/menu-sing-up.component';
-import { AlertSingUpComponent } from './Components/alert/alert-sing-up/alert-sing-up.component';
+import { AlertSingUpComponent } from './Components/Alert/alert-sing-up/alert-sing-up.component';
+import { MainPatientComponent } from './Components/Patient/main-patient/main-patient.component';
+import { MedicalAppointmentComponent } from './Components/Patient/medical-appointment/medical-appointment.component';
+import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
+import { SideBarPatientComponent } from './Components/SideBar/side-bar-patient/side-bar-patient.component';
+import { HeaderComponent } from './Components/Header/header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { AlertSingUpComponent } from './Components/alert/alert-sing-up/alert-sin
     SingUpDoctorComponent,
     SingUpPatientComponent,
     MenuSingUpComponent,
-    AlertSingUpComponent
+    AlertSingUpComponent,
+    MainPatientComponent,
+    MedicalAppointmentComponent,
+    ListAvailableDoctorsComponent,
+    SideBarPatientComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

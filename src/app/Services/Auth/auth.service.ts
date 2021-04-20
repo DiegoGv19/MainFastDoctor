@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -22,6 +22,15 @@ export class AuthService {
 
 
   constructor(private api:ApiService, private httpClient: HttpClient , private router: Router) { }
+
+  public getHttpHeaders(): HttpHeaders
+  {
+    let httpHeaders: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${this.token.tokenType} ${this.token.token}`
+    })
+    return httpHeaders;
+  }
 
   public setToken(token: Token)
   {

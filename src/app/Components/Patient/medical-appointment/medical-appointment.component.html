@@ -1,0 +1,23 @@
+<div class="medical-appointment-container">
+    
+    <h1>Cita Médica</h1>
+    
+    <form [formGroup]="formMedicalAppointment" class="medical-appointment-container-form">
+        <div class="form-group">
+            <label for="" class="form-label">Dinos tus sintomas:</label>
+            <textarea class="form-control" name="symptom" formControlName="symptom"></textarea>
+        </div>
+        <div class="medical-appointment-container-dates">
+            <div class="form-group">
+                <label for="">Fecha para la cita</label>
+                <input type="date" class="form-control" name="date" formControlName="date">
+            </div>
+            <div class="form-group">
+                <label for="">Hora de la cita</label>
+                <input type="time" class="form-control" name="time" formControlName="time">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="saveFormMedicalAppointment()">Continuar</button>
+    </form>
+</div>

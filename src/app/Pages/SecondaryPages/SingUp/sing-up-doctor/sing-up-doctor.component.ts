@@ -72,7 +72,7 @@ export class SingUpDoctorComponent implements OnInit {
       doctor.usuario = user;
       especialidad.nombre = doctor.especialidad;
       doctor.especialidad = especialidad;
-      this.doctorService.RegisterPatient(doctor).subscribe(
+      this.doctorService.registerDoctor(doctor).subscribe(
         () => {
           this.confirmCreated = true;
         },
