@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { SideBarPatientService } from 'src/app/Services/SideBarPatient/side-bar-patient.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class SideBarPatientComponent implements OnInit {
   
   activeMenu: boolean = false;
 
-  constructor(private sideBarPatientService: SideBarPatientService) { }
+  constructor(private authService: AuthService,private sideBarPatientService: SideBarPatientService, private router: Router) { }
 
   ngOnInit(): void {
     this.sideBarPatientService.activeMenu.subscribe(data => {
@@ -18,4 +20,9 @@ export class SideBarPatientComponent implements OnInit {
     })
   }
 
+  public logout()
+  {
+    this.authService.clearToken();
+    this.router.navigateByUrl('');
+  }
 }

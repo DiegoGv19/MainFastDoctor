@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Doctor } from 'src/app/Model/Doctor';
 import { DoctorService } from 'src/app/Services/Doctor/doctor.service';
 
@@ -11,13 +12,19 @@ export class ListAvailableDoctorsComponent implements OnInit {
 
   public listDoctors: Array<Doctor> = new Array();
 
-  constructor(private doctorService: DoctorService) { 
+  constructor(private doctorService: DoctorService, private router: Router) { 
 
   }
 
   ngOnInit(): void {
     this.findDoctorsAvailable();
     this.listDoctors = this.doctorService.getListDoctorsAvailable();
+  }
+
+  public viewDocto(doctor: Doctor)
+  {
+    this.doctorService.setDoctorSelect(doctor);
+    this.router.navigateByUrl('main/patient/view-doctor');
   }
 
   private findDoctorsAvailable()
@@ -29,4 +36,5 @@ export class ListAvailableDoctorsComponent implements OnInit {
       }
     )
   }
+
 }

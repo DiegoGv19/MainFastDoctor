@@ -19,6 +19,9 @@ import { MedicalAppointmentComponent } from './Components/Patient/medical-appoin
 import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
 import { SideBarPatientComponent } from './Components/SideBar/side-bar-patient/side-bar-patient.component';
 import { HeaderComponent } from './Components/Header/header/header.component';
+import { DoctorPerfilComponent } from './Components/Doctor/doctor-perfil/doctor-perfil.component';
+import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
+import { SideBarDoctorComponent } from './Components/SideBar/side-bar-doctor/side-bar-doctor.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { HeaderComponent } from './Components/Header/header/header.component';
     MedicalAppointmentComponent,
     ListAvailableDoctorsComponent,
     SideBarPatientComponent,
-    HeaderComponent
+    HeaderComponent,
+    DoctorPerfilComponent,
+    ViewDoctorComponent,
+    SideBarDoctorComponent
   ],
   imports: [
     BrowserModule,

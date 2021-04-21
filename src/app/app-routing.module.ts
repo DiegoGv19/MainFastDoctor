@@ -10,6 +10,7 @@ import { SingUpPatientComponent } from './Pages/SecondaryPages/SingUp/sing-up-pa
 import { MainPatientComponent } from './Components/Patient/main-patient/main-patient.component';
 import { MedicalAppointmentComponent } from './Components/Patient/medical-appointment/medical-appointment.component';
 import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
+import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
 
 const routes: Routes = [
   {
@@ -61,8 +62,11 @@ const routes: Routes = [
           {
             path: 'list-available-doctor',
             component: ListAvailableDoctorsComponent
+          },
+          {
+            path: 'view-doctor',
+            component: ViewDoctorComponent
           }
-
         ]
       }
     ]

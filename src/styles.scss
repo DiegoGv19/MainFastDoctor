@@ -4,6 +4,9 @@
     padding: 0;
 }
 
+$color-main: #f4f7fa;
+
 body {
     min-height: 100vh;
+    background: $color-main;
 }

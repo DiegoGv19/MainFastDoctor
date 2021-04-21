@@ -1,0 +1,47 @@
+$color-main: #f4f7fa;
+$color-text-white: #fff;
+
+.container-doctor {
+    background: $color-text-white;
+    border-radius: 8px;
+    padding: 8px;
+    &-title {
+        padding: 8px 8px 32px 8px;
+    }    
+    @media screen and (min-width: 650px) {
+        padding: 24px;
+    }
+}
+
+.view-doctor-container {
+    padding: 4px;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: 1fr;
+    @media screen and (min-width: 900px) {
+        padding: 24px;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 32px;
+
+    }
+}
+
+.view-doctor-data {
+    background: $color-main;
+    display: flex;
+    padding: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-content: center;
+    & p {
+        margin: 0 !important;
+        align-self: center;
+    }
+}
+
+.btn-danger, .btn-success{
+    margin-left: 8px;
+}
+

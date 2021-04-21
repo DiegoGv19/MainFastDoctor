@@ -1,0 +1,49 @@
+<div class="view-doctor-container">
+    <div class="container-doctor">
+        <h2 class="container-doctor-title">Datos personales</h2>
+        <div>
+            <div class="view-doctor-data">
+                <p>Nombre: <span>{{doctor.usuario.nombre}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Apellido: <span>{{doctor.usuario.apellidoPaterno}} {{doctor.usuario.apellidoMaterno}}</span></p>
+            </div>
+            <div class="view-doctor-data"> 
+                <p>DNI: <span>{{doctor.usuario.dni}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Fecha de nacimiento: <span>{{doctor.usuario.fechaNacimiento}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Celular: <span>{{doctor.usuario.celular}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Correo: <span>{{doctor.usuario.correo}}</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-doctor">
+        <h2 class="container-doctor-title">Datos de contacto</h2>
+        <div>
+            <div class="view-doctor-data">
+                <p>Distrito: <span>{{doctor.usuario.distrito}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Domicilio: <span>{{doctor.usuario.direccion}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Especialidad: <span>{{doctor.especialidad.nombre}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Centro de Labor:  <span>{{doctor.centro_labor}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Colegiatura:  <span>{{doctor.numero_colegiatura}}</span></p>
+            </div>
+            <div class="view-doctor-data">
+                <p>Tarifa:  <span>${{doctor.tarifa}}</span></p>
+            </div>
+        </div>
+    </div>
+</div>

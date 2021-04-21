@@ -13,10 +13,22 @@ export class DoctorService {
   private urlRegisterDoctor: string = 'usuario/registroDoctor';
   private urlDoctorsAvailable: string = 'paciente/doctor/disponibles'
 
-  private listDoctorsAvailable: Array<Doctor> = new Array();
 
+  private doctorSelect: Doctor = new Doctor();
+  private listDoctorsAvailable: Array<Doctor> = new Array();
+  
   constructor(private authService: AuthService, private apiService: ApiService, private httpClient: HttpClient) {
 
+  }
+
+  public setDoctorSelect(doctor: Doctor)
+  {
+    this.doctorSelect = doctor;
+  }
+
+  public getDoctorSelect(): Doctor
+  {
+    return this.doctorSelect;
   }
 
   public setListDoctorsAvailable(listDoctorsAvailable: Array<Doctor>)
