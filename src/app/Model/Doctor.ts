@@ -2,6 +2,7 @@ import { Speciality } from "./Speciality";
 import { User } from "./User";
 
 export class Doctor {
+    public idDoctor: number;
     public dniFoto: string;
     public disponibilidad: string;
     public habilitado: string;
@@ -13,6 +14,7 @@ export class Doctor {
 
     public constructor()
     {
+        this.idDoctor = 0;
         this.dniFoto = '';
         this.disponibilidad = '';
         this.habilitado = '';

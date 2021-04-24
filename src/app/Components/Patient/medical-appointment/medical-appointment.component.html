@@ -4,17 +4,24 @@
     
     <form [formGroup]="formMedicalAppointment" class="medical-appointment-container-form">
         <div class="form-group">
-            <label for="" class="form-label">Dinos tus sintomas:</label>
-            <textarea class="form-control" name="symptom" formControlName="symptom"></textarea>
+            <label for="sintoma">Selecciona el area de tu sintoma</label>
+            <select class="form-control" id="sintoma" name="sintomaSelec" formControlName="areaSintoma_id">
+                <option value="" selected disabled hidden>Choose here</option>
+                <option *ngFor="let symptom of listSymptom" [value]="symptom.idAreaSintoma">{{symptom.nombre}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Describe tus sintomas:</label>
+            <textarea class="form-control" name="symptom" formControlName="descripcion"></textarea>
         </div>
         <div class="medical-appointment-container-dates">
             <div class="form-group">
                 <label for="">Fecha para la cita</label>
-                <input type="date" class="form-control" name="date" formControlName="date">
+                <input type="date" class="form-control" name="date" formControlName="fechaCita">
             </div>
             <div class="form-group">
                 <label for="">Hora de la cita</label>
-                <input type="time" class="form-control" name="time" formControlName="time">
+                <input type="time" class="form-control" name="time" formControlName="horaInicio">
             </div>
         </div>
 
