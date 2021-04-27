@@ -5,6 +5,7 @@ import { Doctor } from 'src/app/Model/Doctor';
 import { AppointmentService } from 'src/app/Services/Appointment/appointment.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { DoctorService } from 'src/app/Services/Doctor/doctor.service';
+import { GoogleMapService } from 'src/app/Services/GoogleMap/google-map.service';
 
 @Component({
   selector: 'app-list-available-doctors',
@@ -18,15 +19,13 @@ export class ListAvailableDoctorsComponent implements OnInit {
   public listTime: Array<any> = new Array();
 
   constructor(private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router) { 
-  
-  }
-
-
-
-  ngOnInit(): void {
     this.findDoctorsAvailable();
     this.listDoctors = this.doctorService.getListDoctorsAvailable();
     this.listTime = this.listHours();
+  }
+
+  ngOnInit(): void {
+
   }
 
   public saveAppointment(doctor: Doctor)

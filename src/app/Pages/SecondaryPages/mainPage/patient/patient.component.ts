@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleMapService } from 'src/app/Services/GoogleMap/google-map.service';
 
 @Component({
   selector: 'app-patient',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private googleMapService: GoogleMapService) { 
+  
   }
 
+  ngOnInit(): void {
+    this.googleMapService.getCurrentPosition();
+  }
 }
+
