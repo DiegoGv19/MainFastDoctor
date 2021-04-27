@@ -1,0 +1,21 @@
+<div>
+    <div>
+        <h1>Historial Medico</h1>
+    </div>
+    <table class="table table-striped table-doctor-main">
+        <thead>
+          <tr>
+            <th scope="col">Código de Cita</th>
+            <th class="delete-with-responsive" scope="col">Fecha</th>
+            <th class="text-center" scope="col">AreaSintoma</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medicalHistory of listMedicalHistory">
+                <td><p>{{medicalHistory.codigoCita}}</p></td>
+                <td><p>{{medicalHistory.fechaCita | date: 'longDate'}}</p></td>
+                <td><p>{{medicalHistory.areaSintoma.nombre}}</p></td>
+            </tr>
+        </tbody>
+      </table>
+</div>

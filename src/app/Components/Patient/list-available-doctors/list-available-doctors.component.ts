@@ -15,14 +15,18 @@ export class ListAvailableDoctorsComponent implements OnInit {
 
   public listDoctors: Array<Doctor> = new Array();
   public appointment: Appointment = new Appointment();
+  public listTime: Array<any> = new Array();
 
   constructor(private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router) { 
-
+  
   }
+
+
 
   ngOnInit(): void {
     this.findDoctorsAvailable();
     this.listDoctors = this.doctorService.getListDoctorsAvailable();
+    this.listTime = this.listHours();
   }
 
   public saveAppointment(doctor: Doctor)
@@ -47,6 +51,27 @@ export class ListAvailableDoctorsComponent implements OnInit {
     this.router.navigateByUrl('main/patient/view-doctor');
   }
 
+  public listHours(): Array<any>
+  {
+    let list: Array<any> = new Array();
+    for(let i = 0; i < this.listDoctors.length; i++)
+    {
+      list.push(`00:${this.randomMinute()}:${this.randomSecond()}`);
+    }
+
+    return list;
+  }
+
+  public randomMinute(): number
+  {
+    return Math.floor(Math.random() * 35) + 15;
+  }
+
+  public randomSecond(): number
+  {
+    return Math.floor(Math.random() * 60) + 1;
+  }
+
   private findDoctorsAvailable()
   {
     this.doctorService.findDoctorsAvailable().subscribe(
@@ -56,5 +81,4 @@ export class ListAvailableDoctorsComponent implements OnInit {
       }
     )
   }
-
 }

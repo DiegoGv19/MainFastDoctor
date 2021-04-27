@@ -7,14 +7,15 @@
         <thead>
           <tr>
             <th scope="col">Doctor</th>
-            <th scope="col">Especialidad</th>
+            <th class="delete-with-responsive" scope="col">Especialidad</th>
+            <th class="text-center" scope="col">Tiempo de llegada</th>
             <th scope="col">Tarifa</th>
             <th scope="col">Perfil</th>
             <th scope="col">Agendar</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let doctor of listDoctors">
+          <tr *ngFor="let doctor of listDoctors; let i = index">
             <td class="table-docto">
               <div>
                 {{doctor.usuario.nombre}} 
@@ -26,8 +27,9 @@
                 {{doctor.usuario.apellidoMaterno}}
               </div>
             </td>
-            <td>{{doctor.especialidad.nombre}}</td>
-            <td>${{doctor.tarifa}}</td>
+            <td class="delete-with-responsive">{{doctor.especialidad.nombre}}</td>
+            <td><p class="text-center">{{listTime[i]}}</p></td>
+            <td>S/{{doctor.tarifa}}.00</td>
             <td>
               <a (click)="viewDocto(doctor)" class="btn btn-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-eye-fill" viewBox="0 0 16 16">

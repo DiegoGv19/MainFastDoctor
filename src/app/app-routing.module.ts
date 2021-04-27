@@ -11,6 +11,7 @@ import { MainPatientComponent } from './Components/Patient/main-patient/main-pat
 import { MedicalAppointmentComponent } from './Components/Patient/medical-appointment/medical-appointment.component';
 import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
 import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
+import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
           {
             path: 'view-doctor',
             component: ViewDoctorComponent
+          },
+          {
+            path: 'medical-history',
+            component: MedicalHistoryComponent
           }
         ]
       }

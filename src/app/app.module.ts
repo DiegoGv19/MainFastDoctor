@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { HeaderComponent } from './Components/Header/header/header.component';
 import { DoctorPerfilComponent } from './Components/Doctor/doctor-perfil/doctor-perfil.component';
 import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
 import { SideBarDoctorComponent } from './Components/SideBar/side-bar-doctor/side-bar-doctor.component';
+import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -42,14 +45,16 @@ import { SideBarDoctorComponent } from './Components/SideBar/side-bar-doctor/sid
     HeaderComponent,
     DoctorPerfilComponent,
     ViewDoctorComponent,
-    SideBarDoctorComponent
+    SideBarDoctorComponent,
+    MedicalHistoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
