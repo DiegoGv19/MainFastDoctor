@@ -18,14 +18,12 @@ export class ListAvailableDoctorsComponent implements OnInit {
   public appointment: Appointment = new Appointment();
   public listTime: Array<any> = new Array();
 
-  constructor(private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router) { 
-    this.findDoctorsAvailable();
-    this.listDoctors = this.doctorService.getListDoctorsAvailable();
-    this.listTime = this.listHours();
+  constructor(private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router, private googleMapService: GoogleMapService) { 
+
   }
 
   ngOnInit(): void {
-
+    this.findDoctorsAvailable();
   }
 
   public saveAppointment(doctor: Doctor)
@@ -77,6 +75,9 @@ export class ListAvailableDoctorsComponent implements OnInit {
       (data) => {
         this.listDoctors = data;
         this.doctorService.setListDoctorsAvailable(data);
+        this.listTime = this.listHours();
+        this.googleMapService.getCurrentPosition();
+
       }
     )
   }
