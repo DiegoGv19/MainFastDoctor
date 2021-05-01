@@ -10,7 +10,7 @@ import { AuthService } from '../Auth/auth.service';
 })
 export class MedicalHistoryService {
 
-  private urlMedicalHistory: string = 'paciente/historial_medico';
+  private urlMedicalHistory: string = 'paciente/citas/historial_medico';
 
   constructor(private apiService: ApiService, private authService: AuthService, private httpClient: HttpClient) { }
 

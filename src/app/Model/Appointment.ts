@@ -1,5 +1,9 @@
 export class Appointment {
+    public idCita: number;
+    public status: number;
     public horaInicio: string;
+    public horaFin: string;
+    public codigoCita: string;
     public fechaCita: string;
     public areaSintoma_id: number;
     public descripcion: string;
@@ -8,6 +12,11 @@ export class Appointment {
     
     public constructor()
     {
+        this.idCita = 0;
+        this.status = 0;
+        this.horaInicio = '';
+        this.horaFin = '';
+        this.codigoCita = '';
         this.horaInicio = '';
         this.fechaCita = '';
         this.areaSintoma_id = 0;
