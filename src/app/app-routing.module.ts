@@ -12,6 +12,7 @@ import { MedicalAppointmentComponent } from './Components/Patient/medical-appoin
 import { ListAvailableDoctorsComponent } from './Components/Patient/list-available-doctors/list-available-doctors.component';
 import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
 import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
+import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-history/view-medical-history.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
           {
             path: 'medical-history',
             component: MedicalHistoryComponent
+          },
+          {
+            path: 'view-medical-history',
+            component: ViewMedicalHistoryComponent
           }
         ]
       }

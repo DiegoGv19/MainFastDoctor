@@ -1,3 +1,6 @@
+import { SymptomArea } from "./SymptomArea";
+import { Doctor } from "./DoctorHM";
+
 export class Appointment {
     public idCita: number;
     public status: number;
@@ -9,7 +12,9 @@ export class Appointment {
     public descripcion: string;
     public doctor_id: number;
     public paciente_usuario_id: number;
-    
+    public areaSintoma: SymptomArea
+    public doctor: Doctor;
+
     public constructor()
     {
         this.idCita = 0;
@@ -23,5 +28,7 @@ export class Appointment {
         this.descripcion = '';
         this.doctor_id = 0;
         this.paciente_usuario_id = 0;
+        this.areaSintoma = new SymptomArea();
+        this.doctor = new Doctor();
     }
 }

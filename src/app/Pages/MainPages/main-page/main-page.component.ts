@@ -8,13 +8,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  //doctor
-  //correoprueba1@hotmail.com
-  //palejos123
 
-  //patient
-  //diego12345@gmail.com
-  //diego12345
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {

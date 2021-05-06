@@ -1,3 +1,5 @@
+import { Medicamento } from "./Medicamento";
+
 export class MedicalPrescription {
     public idPrescripcionMedica: number;
     public codigoPrescripcion: string;
@@ -5,6 +7,7 @@ export class MedicalPrescription {
     public fechaFin: string;
     public cantidad: number;
     public frecuencia: string;
+    public medicamento: Medicamento;
 
     public constructor() {
         this.idPrescripcionMedica = 0;
@@ -13,5 +16,6 @@ export class MedicalPrescription {
         this.fechaFin = '';
         this.cantidad = 0;
         this.frecuencia = '';
+        this.medicamento = new Medicamento();
     }
 }

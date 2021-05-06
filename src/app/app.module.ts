@@ -26,6 +26,7 @@ import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-docto
 import { SideBarDoctorComponent } from './Components/SideBar/side-bar-doctor/side-bar-doctor.component';
 import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
 import { from } from 'rxjs';
+import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-history/view-medical-history.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { from } from 'rxjs';
     DoctorPerfilComponent,
     ViewDoctorComponent,
     SideBarDoctorComponent,
-    MedicalHistoryComponent
+    MedicalHistoryComponent,
+    ViewMedicalHistoryComponent
   ],
   imports: [
     BrowserModule,
