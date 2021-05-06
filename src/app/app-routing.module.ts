@@ -13,6 +13,8 @@ import { ListAvailableDoctorsComponent } from './Components/Patient/list-availab
 import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
 import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
 import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-history/view-medical-history.component';
+import { MainDoctorComponent } from './Components/Doctor/main-doctor/main-doctor.component';
+import { ListAppointmentAvailabilityComponent } from './Components/Doctor/list-appointment-availability/list-appointment-availability.component';
 
 const routes: Routes = [
   {
@@ -43,7 +45,21 @@ const routes: Routes = [
     children: [
       {
         path: 'doctor',
-        component: DoctorComponent
+        component: DoctorComponent,
+        children: [
+          {
+            path: '',
+            component: MainDoctorComponent
+          },
+          {
+            path: 'main-doctor',
+            redirectTo: ''
+          },
+          {
+            path: 'appointment-availability',
+            component: ListAppointmentAvailabilityComponent
+          }
+        ]
       },
       {
         path: 'patient',

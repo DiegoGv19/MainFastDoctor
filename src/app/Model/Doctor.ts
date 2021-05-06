@@ -4,7 +4,7 @@ import { User } from "./User";
 export class Doctor {
     public idDoctor: number;
     public dniFoto: string;
-    public disponibilidad: string;
+    public disponibilidad: boolean;
     public habilitado: string;
     public centro_labor: string;
     public numero_colegiatura: string;
@@ -16,7 +16,7 @@ export class Doctor {
     {
         this.idDoctor = 0;
         this.dniFoto = '';
-        this.disponibilidad = '';
+        this.disponibilidad = true;
         this.habilitado = '';
         this.centro_labor = '';
         this.numero_colegiatura = '';

@@ -25,8 +25,9 @@ import { DoctorPerfilComponent } from './Components/Doctor/doctor-perfil/doctor-
 import { ViewDoctorComponent } from './Components/Patient/view-doctor/view-doctor.component';
 import { SideBarDoctorComponent } from './Components/SideBar/side-bar-doctor/side-bar-doctor.component';
 import { MedicalHistoryComponent } from './Components/Patient/medical-history/medical-history.component';
-import { from } from 'rxjs';
 import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-history/view-medical-history.component';
+import { MainDoctorComponent } from './Components/Doctor/main-doctor/main-doctor.component';
+import { ListAppointmentAvailabilityComponent } from './Components/Doctor/list-appointment-availability/list-appointment-availability.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-h
     ViewDoctorComponent,
     SideBarDoctorComponent,
     MedicalHistoryComponent,
-    ViewMedicalHistoryComponent
+    ViewMedicalHistoryComponent,
+    MainDoctorComponent,
+    ListAppointmentAvailabilityComponent
   ],
   imports: [
     BrowserModule,
