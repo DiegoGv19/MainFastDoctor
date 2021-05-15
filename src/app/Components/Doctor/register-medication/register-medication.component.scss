@@ -1,0 +1,33 @@
+.data-container {
+
+    display: flex;
+    justify-content: space-between;
+
+    &-information {
+        display: flex;
+        margin-bottom: 16px;
+        flex-direction: column;
+    }
+
+    & p {
+        margin-bottom: 0;
+    }
+}
+
+.register-medication-container {
+    &-title {
+        background: #3f4d67;
+        color: white;
+        border: 1px solid #3f4d67;
+        border-radius: 8px 8px 0 0;
+        padding: 12px;
+        margin: 0;
+    }
+
+    &-form {
+        border: 1px solid #3f4d67;
+        border-radius: 0 0 8px 8px;
+        padding: 12px;
+    }
+
+}

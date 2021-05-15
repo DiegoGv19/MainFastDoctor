@@ -28,6 +28,10 @@ import { MedicalHistoryComponent } from './Components/Patient/medical-history/me
 import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-history/view-medical-history.component';
 import { MainDoctorComponent } from './Components/Doctor/main-doctor/main-doctor.component';
 import { ListAppointmentAvailabilityComponent } from './Components/Doctor/list-appointment-availability/list-appointment-availability.component';
+import { ListAppointmentAcceptedComponent } from './Components/Doctor/list-appointment-accepted/list-appointment-accepted.component';
+import { MedicalHistoryDoctorComponent } from './Components/Doctor/medical-history-doctor/medical-history-doctor.component';
+import { RegisterMedicalHistoryComponent } from './Components/Doctor/register-medical-history/register-medical-history.component';
+import { RegisterMedicationComponent } from './Components/Doctor/register-medication/register-medication.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ListAppointmentAvailabilityComponent } from './Components/Doctor/list-a
     MedicalHistoryComponent,
     ViewMedicalHistoryComponent,
     MainDoctorComponent,
-    ListAppointmentAvailabilityComponent
+    ListAppointmentAvailabilityComponent,
+    ListAppointmentAcceptedComponent,
+    MedicalHistoryDoctorComponent,
+    RegisterMedicalHistoryComponent,
+    RegisterMedicationComponent
   ],
   imports: [
     BrowserModule,

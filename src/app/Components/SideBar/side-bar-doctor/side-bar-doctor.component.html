@@ -28,13 +28,36 @@
                 </a>
                 <ul class="collapse lisst-unstyled" id="citasMedicas">
                     <li class="container-activo">
-                        <a routerLinkActive="activo">Aprobadas</a>
+                        <a routerLinkActive="activo" routerLink="appointment-accepted">Aprobadas</a>
                     </li>
                     <li class="container-activo">
                         <a routerLinkActive="activo" routerLink="appointment-availability">Solicitadas</a>
                     </li>
                 </ul>
             </li>
+            <!--Eliminar despues -->
+            <li>
+                <a href="#probarvistas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div  class="dropdown-toggle-container">
+                        <span>Probar vistas</span>
+                    </div>
+                </a>
+                <ul class="collapse lisst-unstyled" id="probarvistas">
+                    <li class="container-activo">
+                        <a routerLinkActive="activo" routerLink="appointment-accepted">appointment-accepted</a>
+                    </li>
+                    <li class="container-activo">
+                        <a routerLinkActive="activo" routerLink="medical-history-doctor">medical-history-doctor</a>
+                    </li>
+                    <li class="container-activo">
+                        <a routerLinkActive="activo" routerLink="register-medical-history">register-medical-history</a>
+                    </li>
+                    <li class="container-activo">
+                        <a routerLinkActive="activo" routerLink="register-medication">register-medication</a>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <a routerLinkActive="activo">
                     <div  class="dropdown-toggle-container">

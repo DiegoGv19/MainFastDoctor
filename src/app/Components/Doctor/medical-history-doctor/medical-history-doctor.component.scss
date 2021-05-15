@@ -1,0 +1,7 @@
+.container-information-patient {
+    display: flex;
+    justify-content: space-between;
+    &-flex {
+        display: flex;
+    }
+}
