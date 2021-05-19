@@ -16,10 +16,10 @@ import { ViewMedicalHistoryComponent } from './Components/Patient/view-medical-h
 import { MainDoctorComponent } from './Components/Doctor/main-doctor/main-doctor.component';
 import { ListAppointmentAvailabilityComponent } from './Components/Doctor/list-appointment-availability/list-appointment-availability.component';
 import { ListAppointmentAcceptedComponent } from './Components/Doctor/list-appointment-accepted/list-appointment-accepted.component';
-import { MedicalHistoryService } from './Services/MedicalHistory/medical-history.service';
 import { MedicalHistoryDoctorComponent } from './Components/Doctor/medical-history-doctor/medical-history-doctor.component';
 import { RegisterMedicalHistoryComponent } from './Components/Doctor/register-medical-history/register-medical-history.component';
 import { RegisterMedicationComponent } from './Components/Doctor/register-medication/register-medication.component';
+import { ViewMedicalHistoryDoctorComponent } from './Components/Doctor/view-medical-history-doctor/view-medical-history-doctor.component';
 
 const routes: Routes = [
   {
@@ -71,6 +71,10 @@ const routes: Routes = [
           {
             path: 'medical-history-doctor',
             component: MedicalHistoryDoctorComponent
+          },
+          {
+            path: 'view-medical-history',
+            component: ViewMedicalHistoryDoctorComponent
           },
           {
             path: 'register-medical-history',

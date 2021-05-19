@@ -28,7 +28,7 @@ export class ListAvailableDoctorsComponent implements OnInit {
 
   public saveAppointment(doctor: Doctor)
   {
-   this.appointment = this.appintmentService.getSymptom();
+   this.appointment = this.appintmentService.getAppointment();
    this.appointment.paciente_usuario_id = this.authService.getToken().usuario_id; 
    this.appointment.doctor_id = doctor.idDoctor;
    this.appointment.areaSintoma_id = Number(this.appointment.areaSintoma_id);

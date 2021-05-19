@@ -2,19 +2,19 @@
     <div >
         <div class="container-information-patient-flex">
             <p>Paciente:</p>
-            <p>Jessica Rojas Suarez</p>
+            <p>{{appointment.paciente.usuario.nombre}} {{appointment.paciente.usuario.apellidoPaterno}}</p>
         </div>
         <div class="container-information-patient-flex">
             <P>Fecha de nacimiento:</P>
-            <p>02/06/1995</p>
+            <p>{{appointment.fechaCita | date: 'longDate'}}</p>
         </div>
         <div class="container-information-patient-flex">
-            <p>Distrito</p>
-            <p>San Miguel</p>
+            <p>Distrito:</p>
+            <p>{{appointment.paciente.usuario.distrito}}</p>
         </div>
     </div>
     <div>
-        <button class="btn btn-primary">Registrar Historia</button>
+        <button (click)="registerMedicalHistory()" class="btn btn-primary">Registrar Historia</button>
     </div>
 </div>
 
@@ -32,12 +32,12 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><p>001</p></td>
-                <td><p>April 21, 2021</p></td>
-                <td><p>Cabeza</p></td>
+            <tr *ngFor="let medicalHistory of listMedicalHistory">
+                <td><p>{{medicalHistory.cita.codigoCita}}</p></td>
+                <td><p>{{medicalHistory.cita.fechaCita | date: 'longDate'}}</p></td>
+                <td><p>{{medicalHistory.cita.areaSintoma.nombre}}</p></td>
                 <td>
-                  <a class="btn btn-info">
+                  <a (click)="viewMedicalHistory(medicalHistory)" class="btn btn-info">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-eye-fill" viewBox="0 0 16 16">
                       <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                       <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>

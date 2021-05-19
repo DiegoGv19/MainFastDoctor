@@ -1,36 +1,37 @@
 <div>
     <div class="data-container">
         <div class="data-container-information">
-            <h1>Cita Médica: 001</h1>
-            <p>Fecha: April 21, 2021</p>
-            <p>Doctor: Pedro</p>
+            <h1>Cita Médica: {{appointment.codigoCita}}</h1>
+            <p>{{appointment.fechaCita | date: 'longDate'}}</p>
+            <p>{{appointment.doctor.usuario.nombre}} {{appointment.doctor.usuario.apellidoPaterno}}</p>
         </div>
         <div>
-            <button class="btn btn-primary">Finalizar Registro</button>
+            <button (click)="createListMedicalPrescription()" class="btn btn-primary">Finalizar Registro</button>
         </div>
     </div>
 
     <div class="register-medication-container">
         <h2 class="register-medication-container-title">Prescripción Medica</h2>
         <div>
-            <form action="" class="register-medication-container-form">
+            <form [formGroup]="formMedicalPrescription" action="" class="register-medication-container-form">
                 <div class="form-group">
                     <label for="paciente">Medicacmento: </label>
-                    <input type="text" class="form-control" placeholder="Diagnóstico">
+                    <input formControlName="medicamento_id" type="text" class="form-control" placeholder="Diagnóstico">
+                    <!--<select formControlName="medicamento_id" class="form-control"></select>-->
                 </div>
                 <div class="form-group">
                     <label for="paciente">Cantidad: </label>
-                    <input type="number" class="form-control" placeholder="Diagnóstico">
+                    <input formControlName="cantidad" type="number" class="form-control" placeholder="Diagnóstico">
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea name="" class="form-control" cols="10" rows="5"></textarea>
+                    <textarea formControlName="descripcion" name="" class="form-control" cols="10" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="paciente">Fecha de inicio: </label>
-                    <input type="date" class="form-control" placeholder="Diagnóstico">
+                    <input formControlName="fechaInicio" type="date" class="form-control" placeholder="Diagnóstico">
                 </div>
-                <button class="btn btn-primary">Registrar Historia</button>
+                <button (click)="addList()" class="btn btn-primary">Registrar Historia</button>
             </form>
         </div>
     </div>
@@ -46,18 +47,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Ambrosol 250 mg</td>
-                    <td>3</td>
-                    <td>03/06/2021</td>
-                    <td>El paciente debe tomar este medicamento</td>
+                <tr *ngFor="let medicalPrescription of listMedicalPrescription">
+                    <td>{{medicalPrescription.medicamento_id}}</td>
+                    <td>{{medicalPrescription.cantidad}}</td>
+                    <td>{{medicalPrescription.fechaInicio | date: 'longDate'}}</td>
+                    <td>{{medicalPrescription.descripcion}}</td>
                 </tr>
-                <tr>
-                    <td>Ambrosol 250 mg</td>
-                    <td>3</td>
-                    <td>03/06/2021</td>
-                    <td>El paciente debe tomar este medicamento</td>
-                </tr>
+
             </tbody>
         </table>
     </div>

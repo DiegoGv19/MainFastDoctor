@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Appointment } from 'src/app/Model/Appointment';
+import { Diagnosis } from 'src/app/Model/Diagnosis';
+import { AppointmentService } from 'src/app/Services/Appointment/appointment.service';
+import { DiagnosisService } from 'src/app/Services/Diagnosis/diagnosis.service';
 
 @Component({
   selector: 'app-register-medical-history',
@@ -7,9 +13,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterMedicalHistoryComponent implements OnInit {
 
-  constructor() { }
+  public formDiagnosis: FormGroup = this.formBuilder.group({});
+  public listDiagnosis: Array<Diagnosis> = this.diagnosisService.getListDiagnosis();
+  public appointment: Appointment = this.appointmentService.getAppointment();
+
+  constructor(private diagnosisService: DiagnosisService, private appointmentService: AppointmentService, private formBuilder: FormBuilder, private router: Router) { 
+    this.createForm();
+  }
 
   ngOnInit(): void {
   }
 
+  public createForm()
+  {
+    this.formDiagnosis = this.formBuilder.group({
+      nombre: ["", Validators.required],
+      descripcion: ["", Validators.required]
+    });  
+  }
+
+  public addList()
+  { 
+    if(this.formDiagnosis.valid) {
+      this.diagnosisService.addDiagnosisToList(this.formDiagnosis.value as Diagnosis, this.appointment.idCita);
+      this.formDiagnosis.reset();
+    }
+  }
+
+  public createListDiagnosis()
+  {
+    this.diagnosisService.createDiagnosis().subscribe(
+      () => {
+        this.router.navigateByUrl('main/doctor/register-medication');
+      }
+    )
+  }
 }

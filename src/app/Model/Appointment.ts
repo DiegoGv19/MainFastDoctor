@@ -1,5 +1,6 @@
 import { SymptomArea } from "./SymptomArea";
-import { Doctor } from "./DoctorHM";
+import { Patient } from "./Patient";
+import { Doctor } from "./Doctor";
 
 export class Appointment {
     public idCita: number;
@@ -14,6 +15,7 @@ export class Appointment {
     public paciente_usuario_id: number;
     public areaSintoma: SymptomArea
     public doctor: Doctor;
+    public paciente: Patient;
 
     public constructor()
     {
@@ -30,5 +32,6 @@ export class Appointment {
         this.paciente_usuario_id = 0;
         this.areaSintoma = new SymptomArea();
         this.doctor = new Doctor();
+        this.paciente = new Patient();
     }
 }

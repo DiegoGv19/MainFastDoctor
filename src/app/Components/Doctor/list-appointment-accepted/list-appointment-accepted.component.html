@@ -14,10 +14,10 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="text-center">001</td>
-                <td class="text-center">May 10, 2021</td>
-                <td class="text-center">Cabeza</td>
+            <tr *ngFor="let appointmet of listAppointmets">
+                <td class="text-center">{{appointmet.codigoCita}}</td>
+                <td class="text-center">{{appointmet.fechaCita | date: 'longDate'}}</td>
+                <td class="text-center">{{appointmet.areaSintoma.nombre}}</td>
                 <td class="text-center">
                     <a class="btn btn-info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -27,7 +27,7 @@
                     </a>
                 </td>
                 <td class="text-center">
-                    <a class="btn btn-success">Inicar</a>
+                    <a (click)="startAppointment(appointmet)" class="btn btn-success">Inicar</a>
                 </td>
             </tr>
         </tbody>

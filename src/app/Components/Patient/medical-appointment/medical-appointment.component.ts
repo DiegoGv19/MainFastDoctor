@@ -50,7 +50,7 @@ export class MedicalAppointmentComponent implements OnInit {
   public saveFormMedicalAppointment()
   {
     if(this.formMedicalAppointment.valid) {
-      this.appointmetService.setSymtom(this.formMedicalAppointment.value as Appointment);
+      this.appointmetService.setAppointment(this.formMedicalAppointment.value as Appointment);
       this.router.navigateByUrl('main/patient/list-available-doctor');
     }
 

@@ -12,7 +12,8 @@ import { AuthService } from '../Auth/auth.service';
 export class AppointmentService {
 
   private urlCreateAppointment: string = 'paciente/citas/crear';
-  private urlAppointmentAvailability: string = 'doctor/citas/disponibles';
+  private urlAppointmentAvailability: string = 'doctor/citas/pendientes';
+  private urlAppointmentApprove: string = 'doctor/citas/disponibles';
   private urlApproveAppointment: string = 'doctor/citas/aceptar';
   private urlCancelAppointment: string = 'doctor/citas/cancelar';
 
@@ -20,12 +21,12 @@ export class AppointmentService {
 
   constructor(private authService: AuthService, private apiService: ApiService, private router: Router, private httpClient: HttpClient) { }
 
-  public setSymtom(appointment: Appointment)
+  public setAppointment(appointment: Appointment)
   { 
     this.appointment = appointment;
   }
 
-  public getSymptom(): Appointment
+  public getAppointment(): Appointment
   {
     return this.appointment;
   }
@@ -38,6 +39,11 @@ export class AppointmentService {
   public findAppointmentAvailability(): Observable<Appointment[]>
   {
     return this.httpClient.get<Appointment[]>(`${this.apiService.getUrl()}/${this.urlAppointmentAvailability}/${this.authService.getToken().usuario_id}`, {headers: this.authService.getHttpHeaders()});
+  }
+
+  public findAppointmentApprove(): Observable<Appointment[]>
+  {
+    return this.httpClient.get<Appointment[]>(`${this.apiService.getUrl()}/${this.urlAppointmentApprove}/${this.authService.getToken().usuario_id}`, {headers: this.authService.getHttpHeaders()});
   }
 
   public approveAppointment(citaId: number): Observable<any>

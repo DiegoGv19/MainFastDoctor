@@ -11,8 +11,10 @@ import { AuthService } from '../Auth/auth.service';
 export class MedicalHistoryService {
 
   private urlMedicalHistory: string = 'paciente/citas/historial_medico';
-
+  private urlMedicalHistoryDoctor: string = 'doctor/citas/historial_medico';
+  
   private medicalHistory: MedicalHistory = new MedicalHistory();
+  private ListMedicalHistory: Array<MedicalHistory> = new Array();
 
   constructor(private apiService: ApiService, private authService: AuthService, private httpClient: HttpClient) { }
 
@@ -26,8 +28,22 @@ export class MedicalHistoryService {
     return this.medicalHistory;
   }
 
+  public setListMedicalHistory(ListMedicalHistory: Array<MedicalHistory>)
+  {
+    this.ListMedicalHistory = ListMedicalHistory;
+  }
+
+  public getListMedicalHistory(): Array<MedicalHistory>
+  {
+    return this.ListMedicalHistory;
+  }
   public findMedicalHistory(): Observable<MedicalHistory[]>
   {
     return this.httpClient.get<MedicalHistory[]>(`${this.apiService.getUrl()}/${this.urlMedicalHistory}/${this.authService.getToken().usuario_id}`, {headers: this.authService.getHttpHeaders()});
+  }
+
+  public findMedicalHistoryDoctor(idPatient: number): Observable<MedicalHistory[]>
+  {
+    return this.httpClient.get<MedicalHistory[]>(`${this.apiService.getUrl()}/${this.urlMedicalHistoryDoctor}/${idPatient}`, {headers: this.authService.getHttpHeaders()});
   }
 }

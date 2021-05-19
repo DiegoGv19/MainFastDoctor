@@ -1,32 +1,32 @@
 <div>
     <div class="data-container">
         <div class="data-container-information">
-            <h1>Cita Médica: 001</h1>
-            <p>Fecha: April 21, 2021</p>
-            <p>Doctor: Pedro</p>
+            <h1>Cita Médica: {{appointment.codigoCita}}</h1>
+            <p>{{appointment.fechaCita | date: 'longDate'}}</p>
+            <p>{{appointment.doctor.usuario.nombre}} {{appointment.doctor.usuario.apellidoPaterno}}</p>
         </div>
         <div>
-            <button class="btn btn-primary">Finalizar Registro</button>
+            <button (click)="createListDiagnosis()" class="btn btn-primary">Finalizar Registro</button>
         </div>
     </div>
 
     <div class="register-hitory-container">
         <h2 class="register-hitory-container-title">Diagnóstico</h2>
         <div>
-            <form action="" class="register-hitory-container-form">
+            <form [formGroup]="formDiagnosis" class="register-hitory-container-form">
                 <div class="form-group">
                     <label for="paciente">Paciente: </label>
                     <p class="form-control">Jessica Rojas Suarez</p>
                 </div>
                 <div class="form-group">
                     <label for="">Nombre Diagnóstico</label>
-                    <input type="text" class="form-control" placeholder="Diagnóstico">
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Diagnóstico">
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea name="" class="form-control" cols="10" rows="5"></textarea>
+                    <textarea formControlName="descripcion" class="form-control" cols="10" rows="5"></textarea>
                 </div>
-                <button class="btn btn-primary">Registrar Historia</button>
+                <button (click)="addList()" class="btn btn-primary">Registrar Historia</button>
             </form>
         </div>
     </div>
@@ -35,14 +35,16 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Diagnóstico</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Fiebre</td>
-                    <td>El paciente presenta un afiebre alta</td>
+                <tr *ngFor="let diagnosis of listDiagnosis">
+                    <td>{{diagnosis.cita_id}}</td>
+                    <td>{{diagnosis.nombre}}</td>
+                    <td>{{diagnosis.descripcion}}</td>
                 </tr>
             </tbody>
         </table>

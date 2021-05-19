@@ -1,11 +1,11 @@
 export class Diagnosis {
-    idDiagnostico: number;
+    cita_id: number;
     nombre: string;
     descripcion: string;
 
     public constructor()
     {
-        this.idDiagnostico = 0;
+        this.cita_id = 0;
         this.nombre = '';
         this.descripcion = '';
     }

@@ -28,7 +28,7 @@ export class ViewDoctorComponent implements OnInit {
   
   public saveAppointment()
   {
-    this.appointment = this.appintmentService.getSymptom();
+    this.appointment = this.appintmentService.getAppointment();
     this.appointment.paciente_usuario_id = this.authService.getToken().usuario_id; 
     this.appointment.doctor_id = this.doctorService.getDoctorSelect().idDoctor;
     this.appintmentService.createAppointment(this.appointment).subscribe(
