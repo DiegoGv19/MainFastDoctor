@@ -2,7 +2,7 @@
     <div class="view-medical-history-cita-container">
         <h1>Cita Médica: {{medicalHistory.cita.codigoCita}}</h1>
         <p>Fecha: {{medicalHistory.cita.fechaCita | date: 'longDate'}}</p>
-        <p>Doctor: {{medicalHistory.cita.doctor.doctor_nombre}} {{medicalHistory.cita.doctor.doctor_apellido_paterno}}</p>
+        <p>Doctor: {{medicalHistory.cita.doctor.usuario.nombre}} {{medicalHistory.cita.doctor.usuario.apellidoPaterno}}</p>
     </div>
     <div class="view-medical-history-diagnostico-container">
         <h2 class="view-medical-history-diagnostico-container-title">Diagnostico</h2>
