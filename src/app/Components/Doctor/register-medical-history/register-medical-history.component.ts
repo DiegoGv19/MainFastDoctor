@@ -14,11 +14,12 @@ import { DiagnosisService } from 'src/app/Services/Diagnosis/diagnosis.service';
 export class RegisterMedicalHistoryComponent implements OnInit {
 
   public formDiagnosis: FormGroup = this.formBuilder.group({});
-  public listDiagnosis: Array<Diagnosis> = this.diagnosisService.getListDiagnosis();
+  public listDiagnosis: Array<Diagnosis> = new Array();
   public appointment: Appointment = this.appointmentService.getAppointment();
 
   constructor(private diagnosisService: DiagnosisService, private appointmentService: AppointmentService, private formBuilder: FormBuilder, private router: Router) { 
     this.createForm();
+    this.diagnosisService.setListDiagnosis(new Array<Diagnosis>());
   }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class RegisterMedicalHistoryComponent implements OnInit {
   { 
     if(this.formDiagnosis.valid) {
       this.diagnosisService.addDiagnosisToList(this.formDiagnosis.value as Diagnosis, this.appointment.idCita);
+      this.listDiagnosis = this.diagnosisService.getListDiagnosis();
       this.formDiagnosis.reset();
     }
   }

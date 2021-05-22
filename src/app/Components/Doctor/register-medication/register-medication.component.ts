@@ -16,7 +16,7 @@ import { MedicationService } from 'src/app/Services/Medication/medication.servic
 export class RegisterMedicationComponent implements OnInit {
 
   public formMedicalPrescription: FormGroup = this.formBuilder.group({});
-  public listMedicalPrescription: Array<MedicalPrescription> = this.medicationService.getListMedicalPrescription();
+  public listMedicalPrescription: Array<MedicalPrescription> = new Array();
   public listMedications: Array<Medicamento> = new Array();
   public appointment: Appointment = this.appointmentService.getAppointment();
   private date: any;
@@ -29,6 +29,7 @@ export class RegisterMedicationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.medicationService.setListMedicalPrescription(new Array<MedicalPrescription>());
     this.findMedications();
   }
   public createForm()
@@ -44,6 +45,7 @@ export class RegisterMedicationComponent implements OnInit {
   public addList()
   { 
     if(this.formMedicalPrescription.valid) {
+      this.listMedicalPrescription = this.medicationService.getListMedicalPrescription();
       this.medicationService.addMedicalPrescriptionToList(this.formMedicalPrescription.value as MedicalPrescription, this.appointment.idCita);
       this.formMedicalPrescription.reset();
     }

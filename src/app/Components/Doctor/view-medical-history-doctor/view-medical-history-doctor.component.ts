@@ -18,6 +18,7 @@ export class ViewMedicalHistoryDoctorComponent implements OnInit {
     if (this.medicalHistory.cita.idCita == 0) {
       this.router.navigateByUrl('main/doctor/medical-history-doctor');
     }
+    console.log(this.medicalHistory);
   }
 
   public return()

@@ -11,7 +11,9 @@ export class Doctor {
     public tarifa: string;
     public usuario: User;
     public especialidad: any;
-
+    public doctor_apellido_materno: string;
+    public doctor_apellido_paterno: string;
+    public doctor_nombre: string;
     public constructor()
     {
         this.idDoctor = 0;
@@ -23,5 +25,8 @@ export class Doctor {
         this.tarifa = '';
         this.usuario = new User();
         this.especialidad = '';  
+        this.doctor_nombre = '';
+        this.doctor_apellido_materno = '';
+        this.doctor_apellido_paterno = '';
     }
 }
