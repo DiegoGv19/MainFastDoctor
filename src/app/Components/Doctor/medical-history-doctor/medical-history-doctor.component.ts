@@ -14,7 +14,8 @@ export class MedicalHistoryDoctorComponent implements OnInit {
 
   public appointment: Appointment = this.appointmentService.getAppointment();
   public listMedicalHistory: Array<MedicalHistory> = new Array();
-
+  public date: any;
+  public startTime: string = '';
   constructor(private appointmentService: AppointmentService, private medicalHistoryService: MedicalHistoryService, private router: Router) { }
 
   ngOnInit(): void {
@@ -39,6 +40,10 @@ export class MedicalHistoryDoctorComponent implements OnInit {
 
   public registerMedicalHistory()
   {
+    this.date = new Date();
+    this.startTime = this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
+    localStorage.setItem('fechaInicio', this.startTime);
+
     this.router.navigateByUrl('main/doctor/register-medical-history');
   }
 }

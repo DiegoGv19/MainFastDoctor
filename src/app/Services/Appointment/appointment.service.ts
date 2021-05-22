@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/Model/Appointment';
+import { EndAppointment } from 'src/app/Model/EndAppointment';
 import { ApiService } from '../Api/api.service';
 import { AuthService } from '../Auth/auth.service';
 
@@ -16,6 +17,7 @@ export class AppointmentService {
   private urlAppointmentApprove: string = 'doctor/citas/disponibles';
   private urlApproveAppointment: string = 'doctor/citas/aceptar';
   private urlCancelAppointment: string = 'doctor/citas/cancelar';
+  private urlFinishAppointment: string = 'doctor/citas/realizar_cita';
 
   private appointment: Appointment= new Appointment();
 
@@ -54,5 +56,10 @@ export class AppointmentService {
   public cancelAppointment(citaId: number): Observable<any>
   {
     return this.httpClient.put<any>(`${this.apiService.getUrl()}/${this.urlCancelAppointment}/${this.authService.getToken().usuario_id}&${citaId}`, '', {headers: this.authService.getHttpHeaders()});
+  }
+
+  public finishAppointment(appointment: EndAppointment): Observable<any>
+  {
+    return this.httpClient.put<any>(`${this.apiService.getUrl()}/${this.urlFinishAppointment}`, appointment, {headers: this.authService.getHttpHeaders()});
   }
 }

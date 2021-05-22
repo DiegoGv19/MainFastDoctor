@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Model/Appointment';
+import { EndAppointment } from 'src/app/Model/EndAppointment';
 import { MedicalPrescription } from 'src/app/Model/MedicalPrescription';
+import { Medicamento } from 'src/app/Model/Medicamento';
 import { AppointmentService } from 'src/app/Services/Appointment/appointment.service';
 import { MedicationService } from 'src/app/Services/Medication/medication.service';
 
@@ -15,13 +17,19 @@ export class RegisterMedicationComponent implements OnInit {
 
   public formMedicalPrescription: FormGroup = this.formBuilder.group({});
   public listMedicalPrescription: Array<MedicalPrescription> = this.medicationService.getListMedicalPrescription();
+  public listMedications: Array<Medicamento> = new Array();
   public appointment: Appointment = this.appointmentService.getAppointment();
+  private date: any;
+  private endTime: string = '';
+  private startTime: any;
+  private endAppointment: EndAppointment = new EndAppointment()
 
   constructor(private medicationService: MedicationService, private appointmentService: AppointmentService, private formBuilder: FormBuilder, private router: Router) { 
     this.createForm();
   }
 
   ngOnInit(): void {
+    this.findMedications();
   }
   public createForm()
   {
@@ -41,12 +49,39 @@ export class RegisterMedicationComponent implements OnInit {
     }
   }
 
+  public findMedications()
+  {
+    this.medicationService.findMedications().subscribe(
+      (data) => {
+        this.listMedications = data;
+        this.medicationService.setListMedications(data);
+      }
+    )
+  }
+
   public createListMedicalPrescription()
   {
     this.medicationService.createMedicalPrescription().subscribe(
       () => {
-        this.router.navigateByUrl('main/doctor/register-medication');
+        this.updateAppointment();
       }
     )
+  }
+
+  public updateAppointment()
+  {
+    this.date = new Date();
+    this.endTime = this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
+    this.startTime = localStorage.getItem('fechaInicio') != '' ? localStorage.getItem('fechaInicio') : this.endTime;
+    this.endAppointment.cita_id = this.appointment.idCita;
+    this.endAppointment.horaInicio = this.startTime;
+    this.endAppointment.horaFin = this.startTime;    
+
+
+    this.appointmentService.finishAppointment(this.endAppointment).subscribe(
+      () => {}
+    )
+    this.router.navigateByUrl('main/doctor/appointment-accepted');
+
   }
 }

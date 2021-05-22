@@ -42,10 +42,14 @@ export class RegisterMedicalHistoryComponent implements OnInit {
 
   public createListDiagnosis()
   {
-    this.diagnosisService.createDiagnosis().subscribe(
-      () => {
-        this.router.navigateByUrl('main/doctor/register-medication');
-      }
-    )
+    if (this.diagnosisService.getListDiagnosis()) {  
+      this.diagnosisService.createDiagnosis().subscribe(
+        () => {
+          this.router.navigateByUrl('main/doctor/register-medication');
+        }
+      )
+    }
+    this.router.navigateByUrl('main/doctor/register-medication');
+
   }
 }
