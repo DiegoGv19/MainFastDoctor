@@ -1,4 +1,5 @@
 export class User {
+    public idUser: number;
     public nombreUsuario: string;
     public password: string
     public nombre: string
@@ -10,9 +11,11 @@ export class User {
     public fechaNacimiento: string
     public distrito: string
     public direccion: string
-
+    public latitud: string;
+    public longitud: string;
     public constructor()
     {
+        this.idUser = 0;
         this.nombreUsuario = '';
         this.password = '';
         this.nombre = '';
@@ -24,5 +27,7 @@ export class User {
         this.fechaNacimiento = '';
         this.distrito = '';
         this.direccion = '';
+        this.latitud = '';
+        this.longitud = '';
     }
 }

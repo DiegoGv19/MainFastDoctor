@@ -1,30 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { GoogleMaps } from 'src/app/Model/GoogleMaps';
+import { ApiService } from '../Api/api.service';
+import { AuthService } from '../Auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleMapService {
 
-  private lat: number = 0;
-  private lng: number = 0;
+  private googleMaps: GoogleMaps;
+  private pacienteGoogleMaps: GoogleMaps;
   private zoom: number = 0;
   private mapTypeId: string = 'hybrid';
-
-  constructor() {
-    this.lat = -12.046374;
-    this.lng = -77.042793;
+  private urlGetDataGoogleMaps = 'usuario/ubicacion/obtener';
+  private urlPutDataGoogleMaps = 'usuario/ubicacion/actualizar'
+  constructor(private authService: AuthService, private apiService: ApiService, private httpCliente: HttpClient) {
+    this.googleMaps = new GoogleMaps();
+    this.pacienteGoogleMaps = new GoogleMaps();
     this.zoom = 17;
     this.mapTypeId = 'hybrid';
    }
   
-  public getLat(): number
+  public setGoogleMaps(googleMaps: GoogleMaps)
   {
-    return this.lat;
+    this.googleMaps = googleMaps;
   }
 
-  public getLng(): number 
+  public getGoogleMaps(): GoogleMaps
   {
-    return this.lng;
+    return this.pacienteGoogleMaps;
+  }
+
+  public setPacienteGoogleMaps(pacienteGoogleMaps: GoogleMaps)
+  {
+    this.pacienteGoogleMaps = pacienteGoogleMaps;
+  }
+
+  public getPacienteGoogleMaps(): GoogleMaps
+  {
+    return this.pacienteGoogleMaps;
   }
 
   public getZoom(): number
@@ -41,11 +57,20 @@ export class GoogleMapService {
   {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
+        this.googleMaps.latitud = position.coords.latitude.toString();
+        this.googleMaps.longitud = position.coords.longitude.toString();
         this.zoom = 17;
       }
     )
   }
 
+  public getDataGoogleMaps(userId: number): Observable<GoogleMaps>
+  {
+    return this.httpCliente.get<GoogleMaps>(`${this.apiService.getUrl()}/${this.urlGetDataGoogleMaps}/${userId}`);
+  }
+
+  public putDataGoogleMaps(dataGoogleMaps: GoogleMaps): Observable<GoogleMaps>
+  {
+    return this.httpCliente.put<GoogleMaps>(`${this.apiService.getUrl()}/${this.urlPutDataGoogleMaps}`, dataGoogleMaps);
+  }
 }

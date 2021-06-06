@@ -22,6 +22,7 @@ export class ListAppointmentAvailabilityComponent implements OnInit {
     this.appointmentService.findAppointmentAvailability().subscribe(
       (data) => {
         this.listAppointments = data;
+        console.log(data);
       }
     )
   }

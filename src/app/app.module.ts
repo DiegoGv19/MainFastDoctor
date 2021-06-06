@@ -33,6 +33,7 @@ import { MedicalHistoryDoctorComponent } from './Components/Doctor/medical-histo
 import { RegisterMedicalHistoryComponent } from './Components/Doctor/register-medical-history/register-medical-history.component';
 import { RegisterMedicationComponent } from './Components/Doctor/register-medication/register-medication.component';
 import { ViewMedicalHistoryDoctorComponent } from './Components/Doctor/view-medical-history-doctor/view-medical-history-doctor.component';
+import { DoctorGoogleMapsComponent } from './Components/Doctor/doctor-google-maps/doctor-google-maps.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ViewMedicalHistoryDoctorComponent } from './Components/Doctor/view-medi
     MedicalHistoryDoctorComponent,
     RegisterMedicalHistoryComponent,
     RegisterMedicationComponent,
-    ViewMedicalHistoryDoctorComponent
+    ViewMedicalHistoryDoctorComponent,
+    DoctorGoogleMapsComponent
   ],
   imports: [
     BrowserModule,

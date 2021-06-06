@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Model/Appointment';
 import { Doctor } from 'src/app/Model/Doctor';
+import { GoogleMaps } from 'src/app/Model/GoogleMaps';
 import { AppointmentService } from 'src/app/Services/Appointment/appointment.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { DoctorService } from 'src/app/Services/Doctor/doctor.service';
@@ -17,8 +18,8 @@ export class ListAvailableDoctorsComponent implements OnInit {
   public listDoctors: Array<Doctor> = new Array();
   public appointment: Appointment = new Appointment();
   public listTime: Array<any> = new Array();
-
-  constructor(private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router, private googleMapService: GoogleMapService) { 
+  public googleMaps: GoogleMaps = new GoogleMaps();
+  constructor(private googleMapsService: GoogleMapService, private appintmentService: AppointmentService, private doctorService: DoctorService, private authService: AuthService, private router: Router, private googleMapService: GoogleMapService) { 
 
   }
 
@@ -28,18 +29,37 @@ export class ListAvailableDoctorsComponent implements OnInit {
 
   public saveAppointment(doctor: Doctor)
   {
+    
    this.appointment = this.appintmentService.getAppointment();
    this.appointment.paciente_usuario_id = this.authService.getToken().usuario_id; 
    this.appointment.doctor_id = doctor.idDoctor;
    this.appointment.areaSintoma_id = Number(this.appointment.areaSintoma_id);
    this.appintmentService.createAppointment(this.appointment).subscribe(
     () => {
-      this.router.navigateByUrl('main/patient');
+      
+      this.saveDataGoogleMaps();
     },
     (error) => {
       console.log(error);
     }
-  )
+  );
+    
+  }
+
+  private saveDataGoogleMaps()
+  {
+    this.googleMapService.getCurrentPosition();
+    this.googleMaps = this.googleMapService.getGoogleMaps();
+    this.googleMaps.usuario_id = this.authService.getToken().usuario_id;
+
+    this.googleMapService.putDataGoogleMaps(this.googleMaps).subscribe(
+      () => {
+        this.router.navigateByUrl('main/patient');
+      },
+      () => {
+        alert("Paso un problema al guardar su localización")
+      }
+    );
   }
 
   public viewDocto(doctor: Doctor)

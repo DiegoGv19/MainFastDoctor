@@ -1,0 +1,14 @@
+<div>
+    <agm-map [latitude]="latitudDoctor" [longitude]="longitudDoctor" [zoom]="17" [mapTypeId]="mapTypeId" [fitBounds]="true">
+        <agm-marker [latitude]="latitudDoctor" [longitude]="longitudDoctor" [agmFitBounds]="true">
+            <agm-info-window>
+                Mi posición 
+            </agm-info-window>
+        </agm-marker>
+        <agm-marker [latitude]="latitudPacient" [longitude]="longitudPacient" [agmFitBounds]="true">
+            <agm-info-window>
+                Posición del paciente
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+</div>

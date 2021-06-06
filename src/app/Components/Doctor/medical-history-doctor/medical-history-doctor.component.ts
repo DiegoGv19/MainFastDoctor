@@ -24,6 +24,8 @@ export class MedicalHistoryDoctorComponent implements OnInit {
 
   public findMedicalHistory()
   {
+
+    console.log(this.appointment);
     this.medicalHistoryService.findMedicalHistoryDoctor(this.appointment.paciente.idPaciente).subscribe(
       (data) => {
         this.listMedicalHistory = data;

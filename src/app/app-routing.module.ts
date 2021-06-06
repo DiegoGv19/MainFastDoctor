@@ -20,6 +20,7 @@ import { MedicalHistoryDoctorComponent } from './Components/Doctor/medical-histo
 import { RegisterMedicalHistoryComponent } from './Components/Doctor/register-medical-history/register-medical-history.component';
 import { RegisterMedicationComponent } from './Components/Doctor/register-medication/register-medication.component';
 import { ViewMedicalHistoryDoctorComponent } from './Components/Doctor/view-medical-history-doctor/view-medical-history-doctor.component';
+import { DoctorGoogleMapsComponent } from './Components/Doctor/doctor-google-maps/doctor-google-maps.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
           {
             path: 'register-medication',
             component: RegisterMedicationComponent
+          },
+          {
+            path: 'doctor-google-maps',
+            component: DoctorGoogleMapsComponent 
           }
         ]
       },
