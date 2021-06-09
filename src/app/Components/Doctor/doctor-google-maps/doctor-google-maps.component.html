@@ -1,3 +1,18 @@
-<div id="map">
+<div>
+    <div class="container-informaction">
+        <div class="informacion-cita">
+            <p>Paciente: {{appointment.paciente.usuario.nombre}} {{appointment.paciente.usuario.apellidoPaterno}}</p>
+            <p>Cita Medica: {{appointment.codigoCita}}</p>
+            <p>Hora: {{appointment.horaInicio}}</p>
+        </div>
+        <div >
+            <button (click)="volver()" class="btn btn-primary">Volver</button>
+            <button (click)="calculateAndDisplayRoute()" class="btn btn-success btn-margin">Iniciar</button>
+        </div>
+    </div>
+    <div class="container-map-main">
+        <h2>Conoce la ubicación del paciente</h2>
+        <div id="map" class="container-map">
+        </div>   
+    </div> 
 </div>
-

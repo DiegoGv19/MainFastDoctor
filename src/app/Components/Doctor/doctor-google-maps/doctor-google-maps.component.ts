@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Appointment } from 'src/app/Model/Appointment';
 import { GoogleMaps } from 'src/app/Model/GoogleMaps';
+import { AppointmentService } from 'src/app/Services/Appointment/appointment.service';
 import { GoogleMapService } from 'src/app/Services/GoogleMap/google-map.service';
 
 @Component({
@@ -12,12 +14,15 @@ export class DoctorGoogleMapsComponent implements OnInit {
 
   public doctorGoogleMap: GoogleMaps = new GoogleMaps();
   public pacienteGoogleMap: GoogleMaps = new GoogleMaps();
+  public appointment: Appointment = new Appointment();
   public mapTypeId: string = 'hybrid';
   public latitudDoctor: number = 0;
   public longitudDoctor: number = 0;
   public latitudPacient: number = 0;
   public longitudPacient: number = 0;
-  constructor(private googleMapsService: GoogleMapService, private router: Router) {
+
+  constructor(private appointmentService: AppointmentService, private googleMapsService: GoogleMapService, private router: Router) {
+    this.appointment = appointmentService.getAppointment();
     this.googleMapsService.getCurrentPosition();
     this.doctorGoogleMap =  this.googleMapsService.getGoogleMaps();
     this.pacienteGoogleMap = this.googleMapsService.getPacienteGoogleMaps();
@@ -49,21 +54,41 @@ export class DoctorGoogleMapsComponent implements OnInit {
       lng: this.longitudPacient
     }
 
-    this.calculateAndDisplayRoute(coordDoctor, coordPacient);
+    var map = new google.maps.Map(<HTMLDivElement>document.getElementById("map"),{
+      zoom: 10,
+      center: coordDoctor
+    });
+
+    this.generateMarker(coordDoctor, "Doctor", map);
+    this.generateMarker(coordPacient, "Pacient", map);
   }
 
-  private generateMarker(coord: any, title: string, map: any, image: any): any
+  private generateMarker(coord: any, title: string, map: any): any
   {
     var marker = new google.maps.Marker({
       position: coord,
       map: map,
-      title: title,
-      icon: image
+      title: title
     });
   }
 
-  private calculateAndDisplayRoute(coordDoctor: any, coordPacient: any)
+  public volver()
   {
+    this.router.navigateByUrl('main/doctor/appointment-accepted');
+  }
+
+  public calculateAndDisplayRoute()
+  {
+    var coordDoctor = {
+      lat: this.latitudDoctor,
+      lng: this.longitudDoctor
+     };
+
+     var coordPacient = {
+     lat: this.latitudPacient,
+     lng: this.longitudPacient
+    }
+
     const directionsRenderer = new google.maps.DirectionsRenderer();
     const directionsService  = new google.maps.DirectionsService();
     
@@ -72,9 +97,6 @@ export class DoctorGoogleMapsComponent implements OnInit {
       center: coordDoctor
     });
     directionsRenderer.setMap(map);
-
-
-
 
     directionsService.route(
       {
@@ -85,8 +107,6 @@ export class DoctorGoogleMapsComponent implements OnInit {
       (response, status) => {
         if(status == "OK") {
           directionsRenderer.setDirections(response);
-          this.generateMarker(coordDoctor, "Doctor", map, 'doctor-icon.png');
-          this.generateMarker(coordPacient, "Pacient", map, 'doctor-icon.png');
         } else {
           window.alert("Directions request failed due to " + status);
         }

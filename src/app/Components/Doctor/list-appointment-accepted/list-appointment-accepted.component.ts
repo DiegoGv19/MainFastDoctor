@@ -38,7 +38,7 @@ export class ListAppointmentAcceptedComponent implements OnInit {
     this.router.navigateByUrl('main/doctor/medical-history-doctor');  
   }
 
-  public viewMap(pacientUserId: number)
+  public viewMap(pacientUserId: number, appointment: Appointment)
   {
     this.googleMapService.getCurrentPosition();
     this.doctorGoogleMap = this.googleMapService.getGoogleMaps();
@@ -50,6 +50,7 @@ export class ListAppointmentAcceptedComponent implements OnInit {
         this.pacientGoogleMap.usuario_id = data.usuario_id;
         this.googleMapService.setGoogleMaps(this.doctorGoogleMap);
         this.googleMapService.setPacienteGoogleMaps(this.pacientGoogleMap);
+        this.appointmentService.setAppointment(appointment);
         this.router.navigateByUrl('main/doctor/doctor-google-maps');  
       }
     )

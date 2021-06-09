@@ -1,4 +1,19 @@
-div {
-    width: 600px;
+.container-map {
+    width: 800px;
     height: 600px;
+}
+
+.container-informaction {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-map-main {
+    width: 850px;
+    background: white;
+    padding: 16px;
+}
+
+.btn-margin {
+    margin-left: 8px;
 }
