@@ -45,24 +45,52 @@ export class DoctorGoogleMapsComponent implements OnInit {
     };
 
     var coordPacient = {
-      lat: this.latitudPacient,
-      lng: this.longitudPacient
+      lat: -11.941018,
+      lng: -77.1323117
     }
 
-    var map = new google.maps.Map(<HTMLDivElement>document.getElementById("map"),{
-        zoom: 17,
-        center: coordDoctor
-    });
-
-    var markerDoctor = new google.maps.Marker({
-        position: coordDoctor,
-        map: map
-    });
-
-    var markerPacient = new google.maps.Marker({
-      position: coordPacient,
-      map: map
-  });
+    this.calculateAndDisplayRoute(coordDoctor, coordPacient);
   }
 
+  private generateMarker(coord: any, title: string, map: any, image: any): any
+  {
+    var marker = new google.maps.Marker({
+      position: coord,
+      map: map,
+      title: title,
+      icon: image
+    });
+  }
+
+  private calculateAndDisplayRoute(coordDoctor: any, coordPacient: any)
+  {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService  = new google.maps.DirectionsService();
+    
+    var map = new google.maps.Map(<HTMLDivElement>document.getElementById("map"),{
+      zoom: 17,
+      center: coordDoctor
+    });
+    directionsRenderer.setMap(map);
+
+
+
+
+    directionsService.route(
+      {
+        origin: coordDoctor,
+        destination: coordPacient,
+        travelMode: google.maps.TravelMode["WALKING"],
+      },
+      (response, status) => {
+        if(status == "OK") {
+          directionsRenderer.setDirections(response);
+          this.generateMarker(coordDoctor, "Doctor", map, 'doctor-icon.png');
+          this.generateMarker(coordPacient, "Pacient", map, 'doctor-icon.png');
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
+      }
+    );
+  }
 }
