@@ -10,13 +10,13 @@ import { GoogleMapService } from 'src/app/Services/GoogleMap/google-map.service'
 })
 export class DoctorGoogleMapsComponent implements OnInit {
 
-  public doctorGoogleMap: GoogleMaps;
-  public pacienteGoogleMap: GoogleMaps;
+  public doctorGoogleMap: GoogleMaps = new GoogleMaps();
+  public pacienteGoogleMap: GoogleMaps = new GoogleMaps();
   public mapTypeId: string = 'hybrid';
-  public latitudDoctor: number;
-  public longitudDoctor: number;
-  public latitudPacient: number;
-  public longitudPacient: number;
+  public latitudDoctor: number = 0;
+  public longitudDoctor: number = 0;
+  public latitudPacient: number = 0;
+  public longitudPacient: number = 0;
   constructor(private googleMapsService: GoogleMapService, private router: Router) {
     this.googleMapsService.getCurrentPosition();
     this.doctorGoogleMap =  this.googleMapsService.getGoogleMaps();
@@ -45,8 +45,8 @@ export class DoctorGoogleMapsComponent implements OnInit {
     };
 
     var coordPacient = {
-      lat: -11.941018,
-      lng: -77.1323117
+      lat: this.latitudPacient,
+      lng: this.longitudPacient
     }
 
     this.calculateAndDisplayRoute(coordDoctor, coordPacient);
