@@ -30,7 +30,7 @@ export class GoogleMapService {
 
   public getGoogleMaps(): GoogleMaps
   {
-    return this.pacienteGoogleMaps;
+    return this.googleMaps;
   }
 
   public setPacienteGoogleMaps(pacienteGoogleMaps: GoogleMaps)

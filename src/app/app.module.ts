@@ -74,7 +74,7 @@ import { DoctorGoogleMapsComponent } from './Components/Doctor/doctor-google-map
     FormsModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCDjxxNYD25pHhGHBYojnfDFUdKJYsDQ2w'
+      apiKey: 'AIzaSyCk7vYk_OtHnobunUHMycwJQ5sC4YtUtMM'
     })
   ],
   providers: [],
