@@ -42,6 +42,12 @@ export class DoctorGoogleMapsComponent implements OnInit {
     this.iniciarMap();
   }
 
+  public startAppointment()
+  {
+    this.appointmentService.setAppointment(this.appointment);
+    this.router.navigateByUrl('main/doctor/medical-history-doctor');  
+  }
+
   private iniciarMap()
   {
     var coordDoctor = {
